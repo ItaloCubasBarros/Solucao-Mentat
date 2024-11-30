@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback de Aula</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 70%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e7f7e7;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback sobre a Aula</h1>
+        <form method="POST">
+            <textarea name="feedback" placeholder="Digite seu feedback sobre a aula..." required></textarea><br>
+            <button type="submit">Enviar Feedback</button>
+        </form>
+
+        {% if feedback %}
+        <div class="result">
+            <h2>Seu Feedback:</h2>
+            <p><strong>{{ feedback }}</strong></p>
+
+            
+
+            <h2>Como o Professor pode tratar este Aluno:</h2>
+            <p>{{ sugestao }}</p>
+        </div>
+        {% elif error %}
+        <div class="result">
+            <p style="color: red;">{{ error }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

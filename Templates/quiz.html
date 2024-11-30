@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar Quiz a partir de PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .file-upload {
+            margin-bottom: 20px;
+        }
+        .file-upload input[type="file"] {
+            width: 100%;
+            padding: 10px;
+        }
+        .quiz {
+            margin-top: 20px;
+        }
+        .quiz h2 {
+            margin-bottom: 15px;
+        }
+        .quiz ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .quiz li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <h1>UNIVAG- GERADOR DE QUIZ APARTIR DE PDF</h1>
+    
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <div class="file-upload">
+            <input type="file" name="file" accept=".pdf" required>
+        </div>
+        <button type="submit">Enviar PDF</button>
+    </form>
+
+    {% if resumo %}
+    <div class="resumo">
+        <h2>Resumo:</h2>
+        <p>{{ resumo }}</p>
+    </div>
+
+    <div class="quiz">
+        <h2>Quiz Gerado:</h2>
+        <ul>
+            {% for pergunta in quiz.split("\n") %}
+                <li>{{ pergunta }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
